@@ -1,5 +1,14 @@
-<h1>Hi, <%= session[:name] %>.</h1>
-<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
-  <input type=submit value='logout'>
+<% if (logged_in?) %>
+
+	<h1>Hi, <%= session[:name] %>.</h1>
+
+	<%= form_tag (logout_path) do %>
+  	<%= submit_tag 'LOG OUT'%>
+	<% end %>
+
+	<% else %>
+	<h3>You are not Logged In</h3>
+	<%= link_to "PLEASE LOG IN HERE", login_path %>
+
 <% end %>
 
